@@ -1,0 +1,294 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Load Google Fonts and Critical Styles -->
+    <template id="protek_google_fonts" name="Protek Google Fonts" inherit_id="website.layout">
+        <xpath expr="//head" position="inside">
+            <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700&amp;family=Poppins:wght@300;400;500;600;700&amp;family=Raleway:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+            <style>
+                /* Protek Enerji - Inline critical styles */
+                .protek-topbar {
+                    background: #0A2251 !important;
+                    height: 40px;
+                    display: flex;
+                    align-items: center;
+                    font-size: 13px;
+                    color: rgba(255,255,255,0.8);
+                }
+                .protek-topbar a { color: rgba(255,255,255,0.8); text-decoration: none; }
+                .protek-topbar a:hover { color: #E3000F; }
+                .protek-topbar .protek-notice { color: #E3000F; font-weight: 500; }
+
+                /* ── Edge-to-edge: all pages full viewport width ── */
+                body, #wrapwrap {
+                    overflow-x: clip !important;
+                    max-width: 100% !important;
+                }
+                /* Every Bootstrap container → full width */
+                #wrapwrap .container,
+                #wrapwrap .container-sm,
+                #wrapwrap .container-md,
+                #wrapwrap .container-lg,
+                #wrapwrap .container-xl,
+                #wrapwrap .container-xxl,
+                #wrapwrap .container-fluid {
+                    max-width: 100% !important;
+                    width: 100% !important;
+                    padding-left: 2rem !important;
+                    padding-right: 2rem !important;
+                }
+                /* Sections / wrappers span full width */
+                #wrapwrap section,
+                #wrapwrap footer {
+                    width: 100% !important;
+                    max-width: 100% !important;
+                }
+                /* ── Edge-to-edge header ── */
+                #wrapwrap > header,
+                #wrapwrap header {
+                    width: 100% !important;
+                    max-width: 100% !important;
+                    padding-left: 0 !important;
+                    padding-right: 0 !important;
+                    left: 0 !important;
+                    right: 0 !important;
+                }
+                #wrapwrap header nav.navbar,
+                #wrapwrap header .navbar {
+                    width: 100% !important;
+                    max-width: 100% !important;
+                    padding-left: 0 !important;
+                    padding-right: 0 !important;
+                    margin-left: 0 !important;
+                    margin-right: 0 !important;
+                }
+                #o_main_nav, .o_main_nav, header .o_main_nav {
+                    max-width: 100% !important;
+                    width: 100% !important;
+                    padding-left: 2rem !important;
+                    padding-right: 2rem !important;
+                    margin-left: 0 !important;
+                    margin-right: 0 !important;
+                }
+                .protek-topbar {
+                    width: 100% !important;
+                }
+
+                /* Force navbar dark navy */
+                .protek-enerji-portal header .navbar,
+                .protek-enerji-portal header nav,
+                .protek-enerji-portal header {
+                    background-color: #0A2251 !important;
+                }
+                .protek-enerji-portal header .nav-link,
+                .protek-enerji-portal header .navbar-nav .nav-link,
+                .protek-enerji-portal header a {
+                    color: rgba(255,255,255,0.7) !important;
+                }
+                .protek-enerji-portal header .nav-link:hover,
+                .protek-enerji-portal header .nav-link.active {
+                    color: #fff !important;
+                }
+                .protek-enerji-portal header .btn-primary,
+                .protek-enerji-portal .btn-danger {
+                    background-color: #E3000F !important;
+                    border-color: #E3000F !important;
+                }
+
+                /* Update phone number in header - replace content */
+                .protek-enerji-portal header a[href^="tel:"] .o_force_ltr,
+                .protek-enerji-portal header a[href^="tel:"] span {
+                    font-size: 0 !important;
+                }
+                .protek-enerji-portal header a[href^="tel:"] .o_force_ltr::after,
+                .protek-enerji-portal header a[href^="tel:"] span::after {
+                    content: "0850 441 58 60" !important;
+                    font-size: 12px !important;
+                }
+
+                /* Language Selector Styling */
+                .protek-enerji-portal header .dropdown .dropdown-toggle {
+                    padding: 8px 15px;
+                    font-size: 14px;
+                }
+                .protek-enerji-portal header .dropdown .dropdown-toggle:hover {
+                    background: rgba(255,255,255,0.1) !important;
+                    border-color: white !important;
+                }
+                .protek-enerji-portal header .dropdown-menu {
+                    background: #0A2251;
+                    border: 1px solid rgba(255,255,255,0.2);
+                    min-width: 150px;
+                }
+                .protek-enerji-portal header .dropdown-menu .dropdown-item,
+                .protek-enerji-portal header .dropdown-menu a,
+                .protek-enerji-portal header .dropdown-menu button,
+                .protek-enerji-portal header .dropdown-menu span,
+                .protek-enerji-portal header .dropdown-menu li,
+                .protek-enerji-portal header .dropdown-menu .nav-link {
+                    color: rgba(255,255,255,0.8) !important;
+                    padding: 10px 15px;
+                }
+                .protek-enerji-portal header .dropdown-menu .dropdown-item:hover,
+                .protek-enerji-portal header .dropdown-menu a:hover,
+                .protek-enerji-portal header .dropdown-menu button:hover,
+                .protek-enerji-portal header .dropdown-menu .nav-link:hover {
+                    background: rgba(255,255,255,0.1);
+                    color: white !important;
+                }
+
+                /* Language Switcher (EN | TR) */
+                .protek-lang-btn {
+                    color: rgba(255,255,255,0.6) !important;
+                    transition: all 0.2s ease;
+                }
+                .protek-lang-btn:hover {
+                    color: #fff !important;
+                }
+                .protek-lang-btn.active {
+                    color: #fff !important;
+                    background: #E3000F !important;
+                    border-color: #E3000F !important;
+                }
+            </style>
+        </xpath>
+    </template>
+
+    <!-- Main Layout Template - Add Protek Enerji class to body -->
+    <template id="protek_layout" name="Protek Enerji Layout" inherit_id="website.layout">
+        <xpath expr="//div[@id='wrapwrap']" position="attributes">
+            <attribute name="t-attf-class" add="protek-enerji-portal" separator=" "/>
+        </xpath>
+    </template>
+
+    <!-- Inject top bar at the VERY START of wrapwrap (only once) -->
+    <template id="protek_header" name="Protek Enerji Top Bar" inherit_id="website.layout" priority="1">
+        <xpath expr="//div[@id='wrapwrap']" position="inside">
+            <div class="protek-topbar d-none d-md-flex" style="position:relative;z-index:1;">
+                <div class="container d-flex justify-content-between align-items-center h-100">
+                    <div class="d-flex align-items-center gap-3">
+                        <span><i class="fa fa-envelope me-1"></i>
+                            <a href="mailto:info@protekenerji.com">info@protekenerji.com</a>
+                        </span>
+                        <span class="ms-3"><i class="fa fa-phone me-1"></i> 0850 441 58 60</span>
+                    </div>
+                    <div class="protek-notice">
+                        Muayene Başvurularınızı Unutmayınız !
+                    </div>
+                </div>
+            </div>
+        </xpath>
+    </template>
+
+    <!-- Custom Footer -->
+    <template id="protek_footer" name="Protek Enerji Footer" inherit_id="website.layout">
+        <xpath expr="//footer" position="replace">
+            <footer style="background:#0A2251; font-family:'Open Sans',sans-serif;">
+                <div class="py-5" style="background:#1443A3;">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-lg-4 col-md-6 mb-4">
+                                <img src="/protekenerji/static/src/img/logo-white.png" alt="Protek Enerji" style="max-height:40px; margin-bottom:15px;"/>
+                                <p class="text-white-50" style="font-size:14px;">
+                                    Merkezi ısıtma, soğutma, elektrik, sıcak ve soğuk su sistemlerinde
+                                    profesyonel çözümler üretiyoruz. Isı Sayacı (Kalorimetre) sistemlerinde
+                                    Türkiye'nin güvenilir markası.
+                                </p>
+                                <div class="mt-3 d-flex gap-2">
+                                    <a href="#" class="d-inline-flex align-items-center justify-content-center rounded-circle text-white" style="width:36px;height:36px;background:rgba(255,255,255,0.1);"><i class="fa fa-facebook"></i></a>
+                                    <a href="#" class="d-inline-flex align-items-center justify-content-center rounded-circle text-white" style="width:36px;height:36px;background:rgba(255,255,255,0.1);"><i class="fa fa-twitter"></i></a>
+                                    <a href="#" class="d-inline-flex align-items-center justify-content-center rounded-circle text-white" style="width:36px;height:36px;background:rgba(255,255,255,0.1);"><i class="fa fa-linkedin"></i></a>
+                                    <a href="#" class="d-inline-flex align-items-center justify-content-center rounded-circle text-white" style="width:36px;height:36px;background:rgba(255,255,255,0.1);"><i class="fa fa-instagram"></i></a>
+                                </div>
+                            </div>
+                            <div class="col-lg-2 col-md-6 mb-4">
+                                <h6 class="text-white text-uppercase fw-bold mb-3" style="font-family:'Raleway',sans-serif;">Hızlı Linkler</h6>
+                                <ul class="list-unstyled" style="font-size:14px;">
+                                    <li class="mb-2"><a href="/" class="text-white-50 text-decoration-none"><i class="fa fa-angle-right me-2" style="color:#E3000F;"></i>Anasayfa</a></li>
+                                    <li class="mb-2"><a href="/shop" class="text-white-50 text-decoration-none"><i class="fa fa-angle-right me-2" style="color:#E3000F;"></i>Ürünler</a></li>
+                                    <li class="mb-2"><a href="/my/orders" class="text-white-50 text-decoration-none"><i class="fa fa-angle-right me-2" style="color:#E3000F;"></i>Siparişlerim</a></li>
+                                    <li class="mb-2"><a href="/protek/about" class="text-white-50 text-decoration-none"><i class="fa fa-angle-right me-2" style="color:#E3000F;"></i>Hakkımızda</a></li>
+                                </ul>
+                            </div>
+                            <div class="col-lg-3 col-md-6 mb-4">
+                                <h6 class="text-white text-uppercase fw-bold mb-3" style="font-family:'Raleway',sans-serif;">Sistemlerimiz</h6>
+                                <ul class="list-unstyled" style="font-size:14px;">
+                                    <li class="mb-2"><a href="http://www.fatura360.net" target="_blank" class="text-white-50 text-decoration-none"><i class="fa fa-angle-right me-2" style="color:#E3000F;"></i>Online Gider Paylaşım</a></li>
+                                    <li class="mb-2"><a href="http://www.sayac360.com" target="_blank" class="text-white-50 text-decoration-none"><i class="fa fa-angle-right me-2" style="color:#E3000F;"></i>Online Satış Sistemi</a></li>
+                                    <li class="mb-2"><a href="http://www.muayene360.com" target="_blank" class="text-white-50 text-decoration-none"><i class="fa fa-angle-right me-2" style="color:#E3000F;"></i>Muayene Sistemi</a></li>
+                                </ul>
+                            </div>
+                            <div class="col-lg-3 col-md-6 mb-4">
+                                <h6 class="text-white text-uppercase fw-bold mb-3" style="font-family:'Raleway',sans-serif;">İletişim</h6>
+                                <ul class="list-unstyled text-white-50" style="font-size:14px;">
+                                    <li class="mb-2"><i class="fa fa-map-marker me-2" style="color:#E3000F;"></i>Yenişehir Mah. Kardeşler Cad. No:7/2 Cumhuriyet Teknokent Merkez/SİVAS</li>
+                                    <li class="mb-2"><i class="fa fa-phone me-2" style="color:#E3000F;"></i>0850 441 58 60</li>
+                                    <li class="mb-2"><i class="fa fa-envelope me-2" style="color:#E3000F;"></i>info@protekenerji.com</li>
+                                    <li class="mb-2"><i class="fa fa-globe me-2" style="color:#E3000F;"></i>www.protekenerji.com</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="py-3" style="background:#0A2251;">
+                    <div class="container d-flex justify-content-between align-items-center flex-wrap">
+                        <p class="text-white-50 mb-0 small">© 2026 Protek Enerji Hiz. Tic. San. Ltd. Şti. Tüm hakları saklıdır.</p>
+                        <div>
+                            <a href="/protek/gdpr" class="text-white-50 small me-3 text-decoration-none">Gizlilik Politikası</a>
+                            <a href="#" class="text-white-50 small text-decoration-none">Kullanım Şartları</a>
+                        </div>
+                    </div>
+                </div>
+            </footer>
+        </xpath>
+    </template>
+
+    <!-- Login Required Overlay Template -->
+    <template id="login_required_overlay" name="Login Required Overlay">
+        <div class="protek-login-overlay">
+            <div class="container py-5">
+                <div class="row justify-content-center">
+                    <div class="col-md-6 col-lg-4">
+                        <div class="card shadow-lg border-0">
+                            <div class="card-body text-center p-5">
+                                <div class="mb-4">
+                                    <i class="fa fa-lock fa-4x" style="color:#E3000F;"></i>
+                                </div>
+                                <h3 class="mb-3">Login Required</h3>
+                                <p class="text-muted mb-4">Please login to access our shop and make purchases.</p>
+                                <a href="/web/login" class="btn btn-lg w-100 mb-3" style="background:#E3000F;color:#fff;border-radius:50px;">
+                                    <i class="fa fa-sign-in me-2"></i> Login
+                                </a>
+                                <p class="mb-0">Don't have an account? <a href="/web/signup" style="color:#E3000F;">Register here</a></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </template>
+
+    <!-- Hide default Odoo language selector (we use our own EN|TR switcher) -->
+    <template id="protek_hide_default_lang_selector" name="Hide Default Language Selector" inherit_id="website.header_language_selector">
+        <xpath expr="//li[@data-name='Language Selector']" position="replace"/>
+    </template>
+
+    <!-- Language Selector - After the Contact Us button -->
+    <template id="protek_language_selector" name="Protek Language Selector" inherit_id="website.header_call_to_action">
+        <xpath expr="//li" position="after">
+            <li class="nav-item d-flex align-items-center ms-2">
+                <div class="d-flex align-items-center gap-1">
+                    <t t-set="lang_list" t-value="[lg for lg in request.website.language_ids if lg.code[:2] in ('en','tr')]"/>
+                    <t t-foreach="lang_list" t-as="lg">
+                        <span t-if="not lg_first" style="color:rgba(255,255,255,0.3);">|</span>
+                        <a t-attf-href="/website/lang/#{lg.url_code}"
+                           t-attf-class="protek-lang-btn #{('active') if lg.code == request.env.lang else ''}"
+                           style="padding:5px 10px;border-radius:4px;font-size:12px;font-weight:700;text-decoration:none;letter-spacing:0.5px;">
+                            <t t-esc="lg.code[:2].upper()"/>
+                        </a>
+                    </t>
+                </div>
+            </li>
+        </xpath>
+    </template>
+</odoo>
+

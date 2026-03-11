@@ -1,0 +1,1607 @@
+// Protek Enerji - Custom SCSS Styles
+// Brand Colors from protekenerji.com official website
+// Variables - Exact colors from protekenerji.com
+$protek-primary: #E3000F;        // Red - Primary brand color (links, buttons)
+$protek-primary-hover: #EB0010; // Red hover state
+$protek-secondary: #0A2251;      // Dark Navy Blue (header, footer)
+$protek-blue-medium: #1443A3;    // Medium Blue (footer sections)
+$protek-blue-light: #1853C9;     // Light Blue (newsletter section)
+$protek-accent: #f1f8ff;         // Light Blue Background
+$protek-dark: #032e54;           // Dark text color
+$protek-light: #ffffff;          // White
+$protek-gray: #777777;           // Gray text
+$protek-success: #28a745;
+$protek-warning: #ffc107;
+$protek-danger: #dc3545;
+$protek-info: #17a2b8;
+
+// Typography - Google Fonts loaded via layout template
+// Fonts: Open Sans, Poppins, Raleway
+
+// Mixins
+@mixin transition($property: all, $duration: 0.3s, $timing: ease) {
+    transition: $property $duration $timing;
+}
+
+@mixin box-shadow($shadow: 0 4px 6px rgba(0, 0, 0, 0.1)) {
+    box-shadow: $shadow;
+}
+
+@mixin gradient-bg($start: $protek-secondary, $end: $protek-blue-medium) {
+    background: linear-gradient(135deg, $start 0%, $end 100%);
+}
+
+// General Styles
+.protek-enerji-portal {
+    font-family: 'Open Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+
+    h1, h2, h3, h4, h5, h6 {
+        font-family: 'Raleway', sans-serif;
+    }
+
+    // Force header to dark navy like protekenerji.com
+    header {
+        .navbar, nav.navbar {
+            background-color: $protek-secondary !important;
+        }
+
+        .nav-link, .navbar-nav .nav-link {
+            color: rgba(255, 255, 255, 0.7) !important;
+
+            &:hover, &.active {
+                color: #fff !important;
+            }
+        }
+    }
+}
+
+.protek-accent {
+    color: $protek-primary !important;
+}
+
+.protek-accent-text {
+    color: $protek-primary;
+}
+
+// Top Bar - Matching protekenerji.com style
+.protek-top-bar {
+    background-color: $protek-secondary !important;
+    font-size: 14px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+
+    a {
+        color: rgba(255, 255, 255, 0.8);
+        text-decoration: none;
+        @include transition;
+
+        &:hover {
+            color: $protek-primary;
+            text-decoration: underline;
+        }
+    }
+
+    i {
+        color: #fff;
+        margin-right: 5px;
+    }
+
+    .phone-icon {
+        margin-left: 15px;
+    }
+}
+
+// ── Edge-to-edge global layout ──
+// Every page stretches the full viewport width
+
+// Prevent horizontal scroll
+#wrapwrap,
+body {
+    overflow-x: clip !important;
+    max-width: 100% !important;
+}
+
+// ── All .container / Bootstrap responsive containers → full width ──
+// Applies to main content, sections, footer, shop, etc.
+#wrapwrap .container,
+#wrapwrap .container-sm,
+#wrapwrap .container-md,
+#wrapwrap .container-lg,
+#wrapwrap .container-xl,
+#wrapwrap .container-xxl,
+#wrapwrap .container-fluid {
+    max-width: 100% !important;
+    width: 100% !important;
+    padding-left: 2rem !important;
+    padding-right: 2rem !important;
+}
+
+// Sections themselves should also span full width
+#wrapwrap section,
+#wrapwrap .protek-hero,
+#wrapwrap .protek-about,
+#wrapwrap .protek-cta,
+#wrapwrap .protek-stats,
+#wrapwrap .protek-icon-boxes,
+#wrapwrap .protek-shop-hero,
+#wrapwrap .protek-page-header,
+#wrapwrap .protek-shop-header,
+#wrapwrap footer,
+#wrapwrap .protek-footer {
+    width: 100% !important;
+    max-width: 100% !important;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+}
+
+// ── Header stretches full viewport width ──
+#wrapwrap > header,
+#wrapwrap header {
+    width: 100% !important;
+    max-width: 100% !important;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+}
+
+#wrapwrap header nav.navbar,
+#wrapwrap header .navbar {
+    width: 100% !important;
+    max-width: 100% !important;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+}
+
+// Navbar inner container — full width with side padding
+#o_main_nav,
+.o_main_nav,
+header .o_main_nav {
+    max-width: 100% !important;
+    width: 100% !important;
+    padding-left: 2rem !important;
+    padding-right: 2rem !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+}
+
+// Top info bar
+.protek-topbar {
+    width: 100% !important;
+    .container, .container-fluid, .container-xl, .container-lg, .container-md, .container-sm {
+        max-width: 100% !important;
+        width: 100% !important;
+        padding-left: 2rem !important;
+        padding-right: 2rem !important;
+    }
+}
+
+// ── Shop layout ──
+#o_wsale_container {
+    max-width: 100% !important;
+    padding-left: 2rem !important;
+    padding-right: 2rem !important;
+    overflow-x: clip !important;
+}
+
+// Move "All products" header and search bar away from the left edge
+#o_wsale_products_header,
+#o_wsale_products_header .products_header,
+#o_wsale_products_header .o_wsale_shop_title,
+#o_wsale_products_header .o_wsale_products_header_search_form_container {
+    padding-left: 2rem !important;
+}
+
+#o_wsale_products_header {
+    padding-right: 2rem !important;
+}
+
+// Product cards — 3 per row on desktop
+@media (min-width: 992px) {
+    #o_wsale_products_grid .oe_product {
+        grid-column: auto / span 4 !important;  // 4/12 cols = 3 cards per row
+    }
+}
+@media (min-width: 768px) and (max-width: 991px) {
+    #o_wsale_products_grid .oe_product {
+        grid-column: auto / span 6 !important;  // 2 per row on md
+    }
+}
+
+// Hero Section - Matching protekenerji.com style
+.protek-hero {
+    background: $protek-secondary;
+    min-height: 60vh;
+    position: relative;
+
+    .protek-hero-bg {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23E3000F' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+        opacity: 0.5;
+    }
+
+    .protek-hero-image {
+        animation: float 6s ease-in-out infinite;
+    }
+
+    h1, h2 {
+        font-family: 'Raleway', sans-serif;
+        font-weight: 600;
+    }
+
+    .btn-get-started,
+    .btn-danger {
+        background: $protek-primary;
+        border-color: $protek-primary;
+        border-radius: 50px;
+        padding: 10px 30px;
+        @include transition;
+
+        &:hover {
+            background: $protek-primary-hover;
+            border-color: $protek-primary-hover;
+        }
+    }
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-20px); }
+}
+
+// Feature Cards - Matching icon-boxes from protekenerji.com
+.protek-feature-card {
+    @include transition;
+    border-radius: 4px;
+    background: #fff;
+
+    &:hover {
+        transform: translateY(-10px);
+        @include box-shadow(0 10px 30px rgba(0, 0, 0, 0.1));
+
+        .protek-feature-icon i {
+            color: $protek-primary-hover;
+        }
+    }
+
+    .protek-feature-icon {
+        width: 80px;
+        height: 80px;
+        margin: 0 auto;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: $protek-accent;
+        border-radius: 50%;
+
+        i {
+            color: $protek-primary;
+            @include transition;
+        }
+    }
+
+    .title a {
+        color: $protek-dark;
+        @include transition;
+
+        &:hover {
+            color: $protek-primary;
+        }
+    }
+
+    .description {
+        color: $protek-gray;
+        font-size: 14px;
+        line-height: 24px;
+    }
+}
+
+// CTA Section - Matching protekenerji.com newsletter style
+.protek-cta {
+    background: $protek-blue-light;
+
+    .btn-light {
+        border-radius: 50px;
+        padding: 10px 30px;
+        @include transition;
+
+        &:hover {
+            background: $protek-secondary;
+            color: #fff;
+        }
+    }
+}
+
+// Stats Section
+.protek-stats {
+    background: $protek-accent;
+
+    .protek-stat {
+        padding: 1.5rem;
+
+        h2 {
+            color: $protek-secondary;
+        }
+    }
+}
+
+// Page Header - Matching protekenerji.com style
+.protek-page-header {
+    background: $protek-secondary;
+
+    .breadcrumb-item {
+        + .breadcrumb-item::before {
+            color: rgba(255, 255, 255, 0.5);
+        }
+
+        a {
+            text-decoration: none;
+            color: rgba(255, 255, 255, 0.8);
+
+            &:hover {
+                color: $protek-primary !important;
+            }
+        }
+    }
+}
+
+// Footer Styles - Matching protekenerji.com exactly
+.protek-footer {
+    background: $protek-secondary;
+    color: #fff;
+    font-size: 14px;
+
+    .protek-footer-top {
+        background: $protek-blue-medium;
+        padding: 60px 0 30px 0;
+    }
+
+    .protek-footer-newsletter {
+        background: $protek-blue-light;
+        padding: 50px 0;
+    }
+
+    .protek-footer-title {
+        font-family: 'Raleway', sans-serif;
+        font-size: 16px;
+        font-weight: 600;
+        position: relative;
+        padding-bottom: 1rem;
+
+        &::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 50px;
+            height: 3px;
+            background: $protek-primary;
+        }
+    }
+
+    a {
+        @include transition;
+        text-decoration: none;
+        color: rgba(255, 255, 255, 0.7);
+
+        &:hover {
+            color: $protek-primary !important;
+        }
+    }
+
+    .protek-social-links {
+        a {
+            display: inline-flex;
+            width: 36px;
+            height: 36px;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+            color: #fff;
+            font-size: 16px;
+
+            &:hover {
+                background: $protek-primary;
+                color: #fff !important;
+            }
+        }
+    }
+
+    .protek-footer-links {
+        ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+
+            li {
+                padding: 10px 0;
+
+                &:first-child {
+                    padding-top: 0;
+                }
+
+                i {
+                    padding-right: 5px;
+                    color: $protek-primary;
+                }
+            }
+        }
+    }
+}
+
+// Shop Styles - Matching protekenerji.com portfolio style
+.protek-shop-page {
+    .oe_structure_not_nearest {
+        margin: 0 !important;
+        padding: 0 !important;
+    }
+}
+
+
+// "All products" title white on dark hero
+#o_wsale_products_header .o_wsale_shop_title {
+    color: #ffffff;
+}
+
+// Wishlist heart - hide label text
+.o_wsale_products_page .o_add_wishlist .o_label {
+    display: none !important;
+}
+
+
+.protek-shop-hero {
+    box-shadow: 0 4px 15px rgba(10, 34, 81, 0.2);
+
+    // Align hero content with the shop container padding
+    .container {
+        max-width: 100%;
+        padding-left: 1.5rem;
+        padding-right: 1.5rem;
+    }
+
+    // Left-align text
+    .col-lg-8 {
+        text-align: left;
+    }
+
+    .protek-feature-badge {
+        @include transition;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+
+        &:hover {
+            background-color: rgba(255, 255, 255, 0.35);
+            transform: translateY(-3px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+        }
+
+        i {
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        small {
+            text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+        }
+    }
+
+    h1 {
+        font-family: 'Raleway', sans-serif;
+        text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+    }
+}
+
+.protek-shop-category-header {
+    h1 {
+        font-family: 'Raleway', sans-serif;
+        font-size: 2rem;
+    }
+
+    .badge {
+        font-size: 0.875rem;
+        font-weight: 600;
+    }
+}
+
+.protek-shop-header {
+    .bg-dark {
+        background: $protek-secondary !important;
+    }
+}
+
+.protek-products-toolbar {
+    border: none;
+    margin-bottom: 1rem;
+
+    // "All products" title — must be white on the dark hero
+    .o_wsale_shop_title,
+    .o_wsale_category_title {
+        color: #fff;
+    }
+
+    // Toolbar row: search LEFT, sort RIGHT
+    .products_header {
+        display: flex;
+        flex-wrap: nowrap;
+        align-items: center;
+        justify-content: space-between;
+        gap: 0.5rem;
+
+        // Search container — push to left, take available space
+        .o_wsale_products_header_search_form_container {
+            order: 1;
+            flex: 1 1 auto;
+            margin-right: auto;
+            max-width: 400px;
+        }
+
+        // Pricelist dropdown
+        .o_pricelist_dropdown {
+            order: 2;
+        }
+
+        // Sort By — push to right
+        .o_sortby_dropdown,
+        .o_wsale_sort_dropdown {
+            order: 3;
+            margin-left: auto;
+            margin-right: 0;
+        }
+
+        // Filters button
+        .btn[data-bs-toggle="offcanvas"] {
+            order: 4;
+        }
+    }
+
+    .btn {
+        @include transition;
+
+        &:hover {
+            transform: translateY(-2px);
+            @include box-shadow(0 4px 8px rgba(0, 0, 0, 0.15));
+        }
+    }
+
+    input,
+    select {
+        border-radius: 4px;
+        border-color: #dee2e6;
+
+        &:focus {
+            border-color: $protek-primary;
+            box-shadow: 0 0 0 0.2rem rgba($protek-primary, 0.25);
+        }
+    }
+}
+
+.protek-products-grid {
+    // Card styles are now handled by the Amazon-style .o_wsale_products_page block above.
+    // Keeping this class for stock-badge / ribbon overrides only.
+
+    .protek-product-card {
+        // stock badge
+        .protek-stock-badge {
+            z-index: 15;
+            .badge {
+                font-size: 0.7rem;
+                padding: 0.3rem 0.6rem;
+                border-radius: 3px;
+                font-weight: 600;
+            }
+        }
+
+        .o_ribbon {
+            &.o_ribbon_left {
+                background: $protek-primary;
+            }
+        }
+    }
+}
+
+.protek-category-nav {
+    .nav-link {
+        @include transition;
+        border-radius: 4px;
+        margin-bottom: 0.5rem;
+        color: $protek-dark;
+        padding: 0.75rem 1rem;
+        border-left: 3px solid transparent;
+
+        &:hover {
+            background-color: $protek-accent;
+            color: $protek-primary;
+            border-left-color: $protek-primary;
+        }
+
+        &.active {
+            background-color: $protek-accent;
+            color: $protek-primary;
+            border-left-color: $protek-primary;
+            font-weight: 600;
+        }
+    }
+}
+
+// Category list sidebar
+.products_categories {
+    .list-group-item,
+    a {
+        @include transition;
+        border-radius: 4px;
+        margin-bottom: 0.25rem;
+        padding: 0.625rem 1rem;
+        border: none;
+
+        &:hover {
+            background-color: $protek-accent !important;
+            color: $protek-primary !important;
+        }
+
+        &.active {
+            background-color: $protek-accent !important;
+            color: $protek-primary !important;
+            font-weight: 600;
+        }
+    }
+}
+
+// Attributes filter styling
+.products_attributes_filters {
+    .accordion-item {
+        border: none;
+        border-bottom: 1px solid #eee;
+
+        .accordion-button {
+            background-color: #fff;
+            color: $protek-secondary;
+            font-weight: 600;
+            font-family: 'Raleway', sans-serif;
+            padding: 1rem 0;
+
+            &:not(.collapsed) {
+                color: $protek-primary;
+                background-color: #fff;
+                box-shadow: none;
+            }
+
+            &:focus {
+                border-color: transparent;
+                box-shadow: none;
+            }
+
+            &::after {
+                color: $protek-primary;
+            }
+        }
+
+        .accordion-body {
+            padding: 0.5rem 0 1rem 0;
+        }
+    }
+
+    .form-check-input {
+        &:checked {
+            background-color: $protek-primary;
+            border-color: $protek-primary;
+        }
+
+        &:focus {
+            border-color: $protek-primary;
+            box-shadow: 0 0 0 0.25rem rgba($protek-primary, 0.25);
+        }
+    }
+
+    .form-check-label {
+        color: $protek-dark;
+        @include transition;
+
+        &:hover {
+            color: $protek-primary;
+        }
+    }
+}
+
+// Search Bar Styling
+.o_searchbar_form {
+    .search-query {
+        border-radius: 25px;
+        border: 2px solid #dee2e6;
+        padding: 0.5rem 1rem;
+        @include transition;
+
+        &:focus {
+            border-color: $protek-primary;
+            box-shadow: 0 0 0 0.2rem rgba($protek-primary, 0.25);
+        }
+
+        &::placeholder {
+            color: rgba(0, 0, 0, 0.4);
+        }
+    }
+
+    .btn {
+        border-radius: 12px;
+        padding: 0.5rem 1.25rem;
+        background: $protek-primary;
+        border-color: $protek-primary;
+        @include transition;
+
+        i, .fa {
+            color: #ffffff !important;
+        }
+
+        &:hover {
+            background: $protek-primary-hover;
+            transform: translateX(2px);
+            
+            i, .fa {
+                color: #ffffff !important;
+            }
+        }
+    }
+}
+
+// Pricelist Dropdown
+.o_pricelist_dropdown {
+    .dropdown-toggle {
+        border-radius: 50px;
+        border: 2px solid #dee2e6;
+        background: white;
+        color: $protek-secondary;
+        @include transition;
+
+        &:hover {
+            border-color: $protek-primary;
+            color: $protek-primary;
+        }
+    }
+
+    .dropdown-menu {
+        border-radius: 8px;
+        border: none;
+        @include box-shadow(0 4px 15px rgba(0, 0, 0, 0.1));
+
+        .dropdown-item {
+            @include transition;
+
+            &:hover, &.active {
+                background: $protek-accent;
+                color: $protek-primary;
+            }
+        }
+    }
+}
+
+// Grid / List toggle — small icon-only buttons sitting right next to Sort By
+.o_wsale_apply_layout {
+    flex: 0 0 auto !important;
+    width: auto !important;         // override d-flex stretching to full width
+
+    &.btn-group,
+    &.d-flex {
+        width: auto !important;
+        display: inline-flex !important;
+    }
+
+    label.btn {
+        padding: 0.25rem 0.5rem !important;
+        font-size: 0.78rem !important;
+        line-height: 1 !important;
+        border-radius: 4px !important;
+        border: 1px solid #dee2e6 !important;
+        background: white;
+        color: $protek-secondary;
+        @include transition;
+        min-width: unset !important;
+        width: auto !important;
+
+        i {
+            font-size: 0.85rem !important;
+        }
+
+        &:hover {
+            border-color: $protek-primary !important;
+            color: $protek-primary !important;
+            background: $protek-accent !important;
+        }
+
+        &.active {
+            background: $protek-primary !important;
+            border-color: $protek-primary !important;
+            color: white !important;
+        }
+    }
+}
+
+// Mobile Offcanvas Filter Panel
+.offcanvas {
+    &.o_wsale_offcanvas {
+        .offcanvas-header {
+            background: $protek-secondary;
+            color: white;
+
+            .btn-close {
+                filter: invert(1);
+            }
+        }
+
+        .offcanvas-body {
+            background: #f8f9fa;
+        }
+    }
+}
+
+// Pagination Styling
+.products_pager {
+    .pagination {
+        .page-link {
+            color: $protek-secondary;
+            border-radius: 8px;
+            margin: 0 0.25rem;
+            border: 2px solid #dee2e6;
+            @include transition;
+
+            &:hover {
+                background: $protek-accent;
+                border-color: $protek-primary;
+                color: $protek-primary;
+            }
+        }
+
+        .page-item.active .page-link {
+            background: $protek-primary;
+            border-color: $protek-primary;
+            color: white;
+            @include box-shadow(0 4px 10px rgba($protek-primary, 0.3));
+        }
+
+        .page-item.disabled .page-link {
+            background: #f8f9fa;
+            border-color: #dee2e6;
+        }
+    }
+}
+
+// Breadcrumb Enhancement
+.o_wsale_breadcrumb {
+    .breadcrumb {
+        background: $protek-accent;
+        border-radius: 8px;
+        padding: 1rem 1.5rem;
+
+        .breadcrumb-item {
+            font-weight: 500;
+
+            a {
+                color: $protek-secondary;
+                text-decoration: none;
+                @include transition;
+
+                &:hover {
+                    color: $protek-primary;
+                }
+            }
+
+            &.active {
+                color: $protek-primary;
+            }
+
+            + .breadcrumb-item::before {
+                color: $protek-gray;
+            }
+        }
+    }
+}
+
+// Product Detail Page Styles
+.protek-product-detail-page {
+    .o_wsale_product_images {
+        .carousel-control-prev,
+        .carousel-control-next {
+            background: rgba($protek-secondary, 0.8);
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            top: 50%;
+            transform: translateY(-50%);
+            opacity: 0;
+            @include transition;
+
+            &:hover {
+                background: $protek-primary;
+            }
+        }
+
+        &:hover {
+            .carousel-control-prev,
+            .carousel-control-next {
+                opacity: 1;
+            }
+        }
+    }
+
+    .protek-product-features {
+        .badge {
+            font-size: 0.875rem;
+            padding: 0.5rem 1rem;
+            border: 1px solid #dee2e6;
+            @include transition;
+
+            &:hover {
+                border-color: $protek-primary;
+                background: $protek-accent !important;
+            }
+        }
+    }
+
+    .protek-product-info-boxes {
+        .card {
+            @include transition;
+            border-radius: 8px;
+
+            &:hover {
+                transform: translateY(-5px);
+                @include box-shadow(0 10px 30px rgba(0, 0, 0, 0.15));
+
+                i {
+                    transform: scale(1.1);
+                }
+            }
+
+            i {
+                @include transition;
+            }
+
+            h6 {
+                font-family: 'Raleway', sans-serif;
+            }
+        }
+    }
+
+    #add_to_cart {
+        &:hover {
+            background: $protek-primary-hover !important;
+            transform: translateY(-2px);
+            @include box-shadow(0 6px 20px rgba($protek-primary, 0.4));
+        }
+    }
+
+    .css_quantity {
+        border: 2px solid #dee2e6;
+        border-radius: 50px;
+        overflow: hidden;
+        @include transition;
+
+        &:focus-within {
+            border-color: $protek-primary;
+            @include box-shadow(0 0 0 0.2rem rgba($protek-primary, 0.25));
+        }
+
+        .btn {
+            background: $protek-accent;
+            border: none;
+            color: $protek-secondary;
+            font-weight: 600;
+
+            &:hover {
+                background: $protek-primary;
+                color: white;
+            }
+        }
+
+        input {
+            border: none;
+            text-align: center;
+            font-weight: 600;
+            color: $protek-secondary;
+        }
+    }
+
+    .o_wsale_product_information_text {
+        color: $protek-gray;
+        line-height: 1.8;
+        font-size: 1rem;
+    }
+
+    .nav-tabs {
+        border-bottom: 2px solid $protek-accent;
+
+        .nav-link {
+            color: $protek-secondary;
+            font-weight: 600;
+            border: none;
+            padding: 1rem 1.5rem;
+            @include transition;
+
+            &:hover {
+                color: $protek-primary;
+                background: $protek-accent;
+            }
+
+            &.active {
+                color: $protek-primary;
+                background: $protek-accent;
+                border-bottom: 3px solid $protek-primary;
+            }
+        }
+    }
+
+    .o_product_feature {
+        padding: 0.5rem 0;
+        border-bottom: 1px solid #eee;
+
+        &:last-child {
+            border-bottom: none;
+        }
+
+        span:first-child {
+            color: $protek-secondary;
+            font-weight: 600;
+        }
+    }
+}
+
+// Cart Styles - Matching protekenerji.com
+.protek-cart-page {
+    .protek-cart-header {
+        .bg-dark {
+            background: $protek-secondary !important;
+        }
+    }
+}
+
+.protek-cart-table {
+    th {
+        background-color: $protek-secondary;
+        color: white;
+        font-family: 'Raleway', sans-serif;
+    }
+
+    tbody tr {
+        @include transition;
+
+        &:hover {
+            background-color: $protek-accent;
+        }
+    }
+}
+
+.protek-cart-summary {
+    background: $protek-accent;
+    border-radius: 4px;
+    padding: 1.5rem;
+    border: 1px solid #eee;
+}
+
+.protek-checkout-btn {
+    background: $protek-primary !important;
+    border-color: $protek-primary !important;
+    border-radius: 50px;
+
+    &:hover {
+        background: $protek-primary-hover !important;
+        border-color: $protek-primary-hover !important;
+    }
+}
+
+// Empty States
+.protek-empty-cart,
+.protek-empty-orders,
+.protek-empty-shop {
+    padding: 3rem;
+
+    .protek-empty-icon {
+        opacity: 0.5;
+    }
+}
+
+// Checkout Styles - Matching protekenerji.com
+.protek-checkout-page {
+    .protek-checkout-header {
+        .bg-dark {
+            background: $protek-secondary !important;
+        }
+    }
+}
+
+.protek-checkout-progress {
+    .protek-step-icon {
+        width: 50px;
+        height: 50px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        @include transition;
+    }
+
+    .protek-step-line {
+        height: 3px;
+        background: #dee2e6;
+    }
+
+    .protek-step.active .protek-step-line {
+        background: $protek-primary;
+    }
+}
+
+.protek-confirmation-success {
+    padding: 2rem;
+
+    .protek-success-icon {
+        animation: pulse 2s infinite;
+    }
+}
+
+@keyframes pulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+}
+
+// Orders Page - Matching protekenerji.com style
+.protek-orders-page,
+.protek-past-orders-page {
+    .protek-orders-header {
+        .rounded {
+            box-shadow: 0 4px 15px rgba(10, 34, 81, 0.3);
+        }
+
+        h2 {
+            font-family: 'Raleway', sans-serif;
+            font-weight: 600;
+        }
+    }
+}
+
+.protek-orders-table {
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+
+    thead {
+        th {
+            background: linear-gradient(135deg, $protek-secondary 0%, $protek-blue-medium 100%);
+            color: white;
+            border: none;
+            font-family: 'Raleway', sans-serif;
+            padding: 15px;
+        }
+    }
+
+    tbody {
+        tr {
+            @include transition;
+            border-bottom: 1px solid #eee;
+
+            &:hover {
+                background-color: $protek-accent;
+            }
+
+            td {
+                padding: 15px;
+                vertical-align: middle;
+            }
+        }
+    }
+
+    .protek-order-row {
+        a {
+            color: $protek-primary;
+            font-weight: 600;
+
+            &:hover {
+                color: $protek-primary-hover;
+                text-decoration: underline;
+            }
+        }
+    }
+
+    .badge {
+        padding: 8px 12px;
+        font-weight: 500;
+        border-radius: 20px;
+    }
+}
+
+// Order Detail Page
+.protek-order-detail-page {
+    .protek-order-header {
+        .rounded {
+            box-shadow: 0 4px 15px rgba(10, 34, 81, 0.3);
+        }
+
+        h2 {
+            font-family: 'Raleway', sans-serif;
+            font-weight: 600;
+        }
+    }
+
+    .card {
+        border-radius: 8px;
+        border: none;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+
+        .card-header {
+            background: white;
+            border-bottom: 3px solid $protek-primary;
+            font-family: 'Raleway', sans-serif;
+            padding: 15px 20px;
+
+            h5 {
+                font-weight: 600;
+                color: $protek-secondary;
+            }
+        }
+
+        .card-body {
+            padding: 20px;
+        }
+    }
+}
+
+// Empty Orders State
+.protek-empty-orders {
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+    padding: 60px 30px;
+
+    .protek-empty-icon {
+        i {
+            color: #ccc;
+        }
+    }
+
+    h3 {
+        color: $protek-secondary;
+        font-family: 'Raleway', sans-serif;
+        font-weight: 600;
+    }
+
+    p {
+        color: #777;
+    }
+
+    .btn {
+        border-radius: 50px;
+        padding: 12px 30px;
+        font-weight: 600;
+    }
+}
+
+// Login/Signup Pages - Matching protekenerji.com
+.protek-login-form,
+.protek-signup-form {
+    .protek-login-header,
+    .protek-signup-header,
+    .protek-reset-header {
+        .protek-login-logo,
+        .protek-signup-logo,
+        .protek-reset-logo {
+            animation: float 3s ease-in-out infinite;
+
+            i {
+                color: $protek-primary;
+            }
+        }
+
+        h2 {
+            font-family: 'Raleway', sans-serif;
+            color: $protek-secondary;
+        }
+    }
+}
+
+.protek-login-required {
+    min-height: 80vh;
+    display: flex;
+    align-items: center;
+    background: $protek-accent;
+
+    .protek-lock-icon {
+        animation: shake 0.5s ease-in-out;
+
+        i {
+            color: $protek-primary;
+        }
+    }
+
+    .card {
+        border-radius: 4px;
+    }
+}
+
+@keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    25% { transform: translateX(-5px); }
+    75% { transform: translateX(5px); }
+}
+
+// GDPR Page - Matching protekenerji.com style
+.protek-gdpr {
+    .protek-gdpr-section {
+        h3 {
+            font-family: 'Raleway', sans-serif;
+            border-bottom: 2px solid $protek-primary;
+            padding-bottom: 0.75rem;
+            color: $protek-secondary;
+        }
+    }
+
+    .protek-gdpr-list {
+        list-style: none;
+        padding-left: 0;
+
+        li {
+            padding: 0.5rem 0;
+            border-bottom: 1px solid #eee;
+            color: $protek-gray;
+
+            &:last-child {
+                border-bottom: none;
+            }
+
+            i {
+                color: $protek-primary;
+            }
+        }
+    }
+}
+
+// Contact Page - Matching protekenerji.com contact section
+.protek-contact {
+    .protek-contact-item {
+        .protek-contact-icon {
+            min-width: 50px;
+
+            i {
+                color: $protek-primary;
+            }
+        }
+
+        h5 {
+            font-family: 'Raleway', sans-serif;
+            color: $protek-secondary;
+        }
+
+        p {
+            color: $protek-gray;
+        }
+    }
+
+    .card {
+        border-radius: 4px;
+    }
+
+    input, textarea {
+        border-radius: 4px;
+
+        &:focus {
+            border-color: $protek-primary;
+            box-shadow: 0 0 0 0.2rem rgba($protek-primary, 0.25);
+        }
+    }
+}
+
+// Breadcrumb - Matching protekenerji.com
+.protek-breadcrumb {
+    .breadcrumb {
+        background: $protek-accent;
+        border-radius: 4px;
+
+        a {
+            color: $protek-secondary;
+            text-decoration: none;
+
+            &:hover {
+                color: $protek-primary;
+            }
+        }
+    }
+}
+
+// Buttons - Matching protekenerji.com btn-get-started
+.btn-danger {
+    background-color: $protek-primary;
+    border-color: $protek-primary;
+    border-radius: 50px;
+    @include transition;
+
+    &:hover, &:focus {
+        background-color: $protek-primary-hover;
+        border-color: $protek-primary-hover;
+    }
+}
+
+.btn-outline-danger {
+    color: $protek-primary;
+    border-color: $protek-primary;
+    border-radius: 50px;
+    @include transition;
+
+    &:hover, &:focus {
+        background-color: $protek-primary;
+        color: white;
+    }
+}
+
+.btn-outline-light {
+    border-radius: 50px;
+}
+
+// Badges
+.badge.bg-danger {
+    background-color: $protek-primary;
+}
+
+// Back to Top Button - Matching protekenerji.com
+.back-to-top {
+    background: $protek-primary;
+    border-radius: 50px;
+
+    &:hover {
+        background: $protek-primary-hover;
+    }
+}
+
+// Language Switcher (EN | TR) in navbar
+.protek-lang-btn {
+    color: rgba(255, 255, 255, 0.6) !important;
+    @include transition;
+
+    &:hover {
+        color: #fff !important;
+    }
+
+    &.active {
+        color: #fff !important;
+        background: $protek-primary !important;
+        border-color: $protek-primary !important;
+    }
+}
+
+// Responsive Adjustments
+@media (max-width: 768px) {
+    .protek-hero {
+        min-height: 50vh;
+
+        h1 {
+            font-size: 2rem;
+        }
+    }
+
+    .protek-stats {
+        .display-4 {
+            font-size: 2rem;
+        }
+    }
+
+    .protek-orders-table {
+        font-size: 0.875rem;
+    }
+}
+
+@media (max-width: 576px) {
+    .protek-feature-card {
+        margin-bottom: 1rem;
+    }
+
+    .protek-checkout-progress {
+        .protek-step-icon {
+            width: 35px;
+            height: 35px;
+            font-size: 0.75rem;
+        }
+
+        small {
+            font-size: 0.65rem;
+        }
+    }
+}
+
+// Cart and Search Icons - White Color for visibility in dark header
+.protek-enerji-portal {
+    header {
+        // All dropdown menus in the header should have dark bg with white text
+        .dropdown-menu {
+            background: $protek-secondary;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+
+            .dropdown-item,
+            a,
+            button,
+            span,
+            li,
+            .nav-link {
+                color: rgba(255, 255, 255, 0.8);
+            }
+
+            .dropdown-item:hover,
+            a:hover,
+            button:hover,
+            .nav-link:hover {
+                background: rgba(255, 255, 255, 0.1);
+                color: #ffffff;
+            }
+
+            .dropdown-item.active,
+            .dropdown-item:active {
+                background: rgba(255, 255, 255, 0.15);
+                color: #ffffff;
+            }
+        }
+
+        // Cart icon
+        .o_wsale_my_cart,
+        .o_wsale_my_cart a,
+        a[href="/shop/cart"],
+        .my_cart_quantity {
+            color: #ffffff;
+        }
+
+        // Search icon and form
+        .o_searchbar_form,
+        .o_searchbar_form .search-query,
+        .o_searchbar_form button,
+        .o_searchbar_form .btn,
+        .o_searchbar_form i,
+        .o_searchbar_form .fa,
+        button[type="submit"] .fa-search,
+        .fa-search {
+            color: #ffffff;
+        }
+
+        // General icon styling in header
+        .fa-shopping-cart,
+        .fa-cart-plus,
+        .fa-cart-arrow-down {
+            color: #ffffff;
+        }
+
+        // Input field styling
+        .o_searchbar_form input {
+            background: rgba(255, 255, 255, 0.1);
+            border-color: rgba(255, 255, 255, 0.3);
+            color: #ffffff;
+
+            &::placeholder {
+                color: rgba(255, 255, 255, 0.6);
+            }
+        }
+
+        // Update phone number display - hide original and show new
+        a[href^="tel:"] {
+            .o_force_ltr,
+            span:not(.fa) {
+                font-size: 0;
+
+                &::after {
+                    content: "0850 441 58 60";
+                    font-size: 12px;
+                    color: #ffffff;
+                }
+            }
+        }
+
+        // Phone icon color
+        .fa-phone {
+            color: #ffffff;
+        }
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Shop Page Customizations -->
+    <template id="protek_shop_inherit" name="Protek Shop Layout" inherit_id="website_sale.products">
+
+        <!-- Shrink filter sidebar -->
+        <xpath expr="//aside[@id='products_grid_before']" position="attributes">
+            <attribute name="class">d-none d-lg-block position-sticky col-2 px-2 clearfix</attribute>
+        </xpath>
+
+        <!-- Add wrapper class to main shop container -->
+        <xpath expr="//div[@id='wrap']" position="attributes">
+            <attribute name="t-attf-class" add="protek-shop-page" separator=" "/>
+        </xpath>
+
+        <!-- Add Protek styling class to products container -->
+        <xpath expr="//div[@id='products_grid']" position="attributes">
+            <attribute name="t-attf-class" add="protek-products-grid" separator=" "/>
+        </xpath>
+
+        <!-- Style the products toolbar (Odoo 19: header#o_wsale_products_header) -->
+        <xpath expr="//header[@id='o_wsale_products_header']" position="attributes">
+            <attribute name="t-attf-class" add="protek-products-toolbar" separator=" "/>
+        </xpath>
+    </template>
+
+    <!-- Product Card Styling with Enhanced Design -->
+    <!-- Minimal product item override - just add admin edit icon -->
+    <template id="protek_product_item" name="Protek Product Item" inherit_id="website_sale.products_item">
+        <xpath expr="//div[hasclass('o_wsale_product_information')]" position="before">
+            <t t-if="request.env.user.has_group('website.group_website_designer')">
+                <a t-attf-href="/web#model=product.template&amp;id=#{product.id}&amp;view_type=form"
+                   title="Edit Product"
+                   style="position:absolute;top:8px;left:8px;z-index:20;width:26px;height:26px;background:rgba(10,34,81,0.85);color:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:0.65rem;text-decoration:none;">
+                    <i class="fa fa-pencil"/>
+                </a>
+            </t>
+        </xpath>
+    </template>
+
+    <!-- DO NOT override shop_product_buttons - use Odoo default -->
+
+    <!-- Enhance Product Price Styling -->
+    <template id="protek_product_price" name="Protek Product Price" inherit_id="website_sale.product_price">
+        <xpath expr="//span[hasclass('oe_price')]" position="attributes">
+            <attribute name="style">color: #E3000F; font-weight: 700; white-space: nowrap;</attribute>
+        </xpath>
+    </template>
+
+    <!-- Shop Hero Banner -->
+    <!-- Uses position="before" so the original oe_structure div is kept intact
+         and the UI editor can still save changes to the shop page. -->
+    <template id="protek_shop_hero" name="Protek Shop Hero" inherit_id="website_sale.products">
+        <xpath expr="//div[@id='oe_structure_website_sale_products_1']" position="before">
+            <div class="protek-shop-hero py-4" style="background: linear-gradient(135deg, #0A2251 0%, #1443A3 100%);">
+                <div class="container">
+                    <div class="row align-items-center">
+                        <div class="col-lg-8">
+                            <h1 class="text-white fw-bold mb-2">
+                                <i class="fa fa-shopping-bag me-2"></i> Our Products
+                            </h1>
+                            <p class="text-white mb-0 opacity-75">
+                                Discover our high quality heat meter and energy management solutions
+                            </p>
+                        </div>
+                        <div class="col-lg-4 text-lg-end mt-3 mt-lg-0">
+                            <div class="d-flex justify-content-lg-end gap-2">
+                                <div class="rounded p-3 text-center" style="min-width:90px;background:rgba(255,255,255,0.2);">
+                                    <i class="fa fa-shield d-block mb-2 text-white" style="font-size:1.75rem;"></i>
+                                    <small class="d-block text-white fw-bold" style="font-size:0.7rem;">Warranty</small>
+                                </div>
+                                <div class="rounded p-3 text-center" style="min-width:90px;background:rgba(255,255,255,0.2);">
+                                    <i class="fa fa-truck d-block mb-2 text-white" style="font-size:1.75rem;"></i>
+                                    <small class="d-block text-white fw-bold" style="font-size:0.7rem;">Fast Delivery</small>
+                                </div>
+                                <div class="rounded p-3 text-center" style="min-width:90px;background:rgba(255,255,255,0.2);">
+                                    <i class="fa fa-certificate d-block mb-2 text-white" style="font-size:1.75rem;"></i>
+                                    <small class="d-block text-white fw-bold" style="font-size:0.7rem;">Local Made</small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </xpath>
+    </template>
+
+    <!-- Product Detail Page Enhancement -->
+    <template id="protek_product_detail" name="Protek Product Detail" inherit_id="website_sale.product">
+        <!-- Add wrapper class -->
+        <xpath expr="//div[@id='wrap']" position="attributes">
+            <attribute name="t-attf-class" add="protek-product-detail-page" separator=" "/>
+        </xpath>
+
+        <!-- Add info box after product details section -->
+        <xpath expr="//div[@id='product_details']" position="after">
+            <div class="protek-product-info-boxes mt-4 col-12">
+                <div class="row g-3">
+                    <div class="col-md-4">
+                        <div class="card border-0 shadow-sm h-100">
+                            <div class="card-body text-center">
+                                <i class="fa fa-truck fa-2x mb-2" style="color:#E3000F;"></i>
+                                <h6 class="fw-bold mb-1" style="color:#0A2251;">Hızlı Teslimat</h6>
+                                <small class="text-muted">2-3 iş günü içinde</small>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="card border-0 shadow-sm h-100">
+                            <div class="card-body text-center">
+                                <i class="fa fa-shield fa-2x mb-2" style="color:#E3000F;"></i>
+                                <h6 class="fw-bold mb-1" style="color:#0A2251;">Garanti</h6>
+                                <small class="text-muted">2 yıl üretici garantisi</small>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="card border-0 shadow-sm h-100">
+                            <div class="card-body text-center">
+                                <i class="fa fa-headphones fa-2x mb-2" style="color:#E3000F;"></i>
+                                <h6 class="fw-bold mb-1" style="color:#0A2251;">Teknik Destek</h6>
+                                <small class="text-muted">7/24 müşteri desteği</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </xpath>
+    </template>
+
+    <!-- Product title feature badges (inherit product_title directly) -->
+    <template id="protek_product_title_badges" name="Protek Product Title Badges" inherit_id="website_sale.product_title">
+        <xpath expr="//h1" position="after">
+            <div class="protek-product-features d-flex flex-wrap gap-2 mb-3">
+                <span class="badge bg-light text-dark border">
+                    <i class="fa fa-shield me-1" style="color:#E3000F;"></i> Garanti Kapsamında
+                </span>
+                <span class="badge bg-light text-dark border">
+                    <i class="fa fa-certificate me-1" style="color:#E3000F;"></i> Yerli Üretim
+                </span>
+                <span class="badge bg-light text-dark border">
+                    <i class="fa fa-check-circle me-1" style="color:#28a745;"></i> Onaylı Ürün
+                </span>
+            </div>
+        </xpath>
+    </template>
+
+    <!-- Adds an 'Add New Product' button to the main shop page for admins -->
+    <template id="protek_shop_admin_actions" name="Protek Shop Admin Actions" inherit_id="website_sale.products">
+        <xpath expr="//header[@id='o_wsale_products_header']" position="before">
+            <div t-if="request.env.user.has_group('base.group_system')" class="d-flex justify-content-end px-3" style="padding-top: 1.5rem; padding-bottom: 0.75rem;">
+                <a href="/web#action=website_sale.product_template_action_website" class="btn btn-primary shadow-sm">
+                    <i class="fa fa-plus me-2"/>Add New Product
+                </a>
+            </div>
+        </xpath>
+    </template>
+</odoo>
